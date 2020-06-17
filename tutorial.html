@@ -1,0 +1,466 @@
+<html>
+    <body>
+        <h1 id="header1">Hello World!</h1>
+        <input type="text" id="ip"/>
+        <script type="text/javascript">
+            // JavaScript programs can be inserted into any part of an HTML document with the help of the <script> tag.
+            // HTML4 required a script to have a type attribute. Usually it was type="text/javascript". It’s not required anymore.
+            // language attribute was meant to show the language of the script. This attribute no longer makes sense because JavaScript is the default language. There is no need to use it.
+            // src attribute: script files are attached to HTML with the src attribute as in <script src="/path/to/script.js">. 
+            // absolute path to the script from the site root, relative path from the current page, or a full url.
+            // If src is set, the script content is ignored.
+            // To attach several scripts, use multiple script tags.
+            // As a rule, only the simplest scripts are put into HTML. More complex ones reside in separate files. The benefit of a separate file is that the browser will download it and store it in its cache which can reused to save traffic and time.
+            
+            // In javascript a semicolon may be omitted in most cases when a line break exists.
+            // JavaScript interprets the line break as an “implicit” semicolon. This is called an automatic semicolon insertion.
+            // There are cases when a newline does not mean a semicolon. For example:
+                /*
+                alert(3 +
+                1
+                + 2);
+                */
+            // There are also situations where JavaScript “fails” to assume a semicolon where it is really needed.
+
+            alert("Hello, world!");
+
+            console.log("This is a log.");
+            console.warn("This is a warning!");
+            console.error("This is an error!!!");
+            document.write("<h2>Hello World!</h2>");
+            document.write("<p>Semicolons in JavaScript are optional, and using line-breaks instead is completely okay except in limited circumstances. The JavaScript interpretor is actually adding in missing semi-colons for you, but it is quite good at this. However, there is a lot of FUD (fear, uncertainty, and doubt) around this feature and, as a result, a lot developers will recommend always including semicolons, just to be safe.</p>");
+
+            // This is a single-line comment.
+            /* This
+            is
+            a
+            multi-line
+            comment. */
+            // Nested comments are not supported, i.e. no /*..*/ inside another /*...*/.
+
+            // "use strict", the modern mode
+            // To enable modern modifications made by ECMAScript 5 (ES5) since 2009 with a special directive "use strict" or 'use strict'
+            // When it is located at the top of a script (and it should be, only comments may appear above it, otherwise the strict mode may not be enabled), the whole script works the modern way.
+            // "use strict" can alse be put at the beginning of a function, which enables strict mode in that function only.
+            // There's no way to cancel "use strict". Once in strict mode, there's no going back.
+            // Modern JavaScript supports classes and modules that enable use strict automatically. So we don't need to add the "use strict" directive at the top, if we use these new features.
+
+            // When use a developer console to run code, you can use Shift+Enter to input multiple lines, and Enter to run code.
+
+            // Variables
+            // A variable is a named storage for data.
+            // To create a variable use the let keyword.
+            /* For example:
+                let message;
+                message = 'Hello';
+                alerat(message);
+
+                let user = 'John', age = 25, gender = 'male';
+            */
+            // Declaring multiple variables in one line is not recommended however.
+            // In older scripts, you may also find another keyword var instead of let.
+            // The var keyword is almost the same as let.
+            // Note: the dollar sign '$' can be used in JavaScript as variable names; non-latin letters can also be used in variable names, but not recommended, for example: let 我 = 'tony';
+            // If not in strict mode, we can use a variable without declaring it first.
+
+            // Constants
+            // To declare a constant variable, use const instead of let.
+            // There's a widespread practice to use constants as aliases for difficult-to-remember values that are known prior to execution. Such constants are named using capital letters and underscores.
+            /* For example:
+                const COLOR_RED = '#F00';
+                const COLOR_GREEN = '#0F0';
+                const COLOR_BLUE = '#00F';
+            */
+            // People normally use capitals for a constant that is known before execution or hard-coded, and name constants like other variables if they are not.
+            
+            document.write(document.getElementById("header1").innerHTML);
+            document.getElementById("header1").innerHTML = "Tech With Tim!";
+            document.getElementById("ip").value = "This is an input box.";
+
+            /* primitive data types
+            1. number: represents both integer and floating point numbers.
+            “Special numeric values” which also belong to this data type: Infinity (represents the mathematical Infinity ∞), -Infinity and NaN (not a number, represents a computational error).
+            2. bigint: the “number” type cannot represent integer values larger than (2^53-1) (that’s 9007199254740991), or less than -(-2^53-1) for negatives, represents integers of arbitrary length.
+            A BigInt value is created by appending n to the end of an integer:
+                const bigInt = 1234567890123456789012345678901234567890n;
+            3. string: there are 3 types of quotes, double quotes, single quotes, backticks (``).
+            Double quotes and single quotes are simple quotes, and there's practically no difference between them
+            Backticks are extended functionality quotes. They allow us to embed variables and expressions into a string by wrapping them in ${…}:
+                let str = "Hello";
+                let str2 = 'Single quotes are ok too';
+                let embed_variable = `can embed another ${str}`;
+                let embed_expression = `the result is ${1 + 2}`;
+            There's no character type in JavaScript as in C or Java.
+            4. boolean: has only two values, true and false.
+            5. null: a special value which represents “nothing”, “empty” or “value unknown”.
+            6. undefined: the meaning of undefined is “value is not assigned”.
+            If a variable is declared, but not assigned, then its value is undefined.
+            It is possible to explicitly assign undefined to a variable.
+            Normally, one uses null to assign an “empty” or “unknown” value to a variable, while undefined is reserved as a default initial value for unassigned things.
+            7. symbol: is used to create unique identifiers for objects.
+            */
+
+            /* non-primitive
+            object: is used to store collections of data and more complex entities.
+            */
+            
+            /* the typeof operator
+            two forms of syntax:
+            1. as an operator: typeof x
+            2. as a function: typeof(x) 
+            Examples:
+                typeof undefined // "undefined"
+                typeof 0 // "number"
+                typeof 10n // "bigint"
+                typeof true // "boolean"
+                typeof "foo" // "string"
+                typeof Symbol("id") // "symbol"
+                typeof Math // "object"
+                typeof null // "object"
+                typeof alert // "function"
+            */
+            console.log(typeof(null)); // typeof null returns "object" – this is an offcially recognized error in typeof behavior kept for compatibility. It’s not actually an object.
+
+            // Browser interaction functions: alert, prompt, confirm
+            // alert: shows a message and waits for the visitor to press OK. The mini-window with the message is called a modal window, which means the user cannot interact with the rest of the page unless they have dealt with the window, i.e. pressing the OK button.
+            /* prompt: accepts two arguments:
+                result = prompt(title, [default]);
+            It shows a modal window with a text message, an input field, and the buttons OK and Cancel.
+            title: the text show the visitor.
+            default: an optional second parameter, the initial value for the input field. The square bracket around it denotes that it is optional, not required.
+            The visitor can type something in the prompt input field and press OK. Then we can get that text in the result variable. Or they can cancel the input by pressing Cancel or hitting Esc key, then we get null as the result.
+            */
+            let age = prompt("How old are you?", 100);
+            alert(`You are ${age} years old.`);
+            /* confirm: 
+                result = confirm(question);
+            The function confirm shows a modal window with a question and two buttons OK and Cancel.
+            The result is true if OK pressed and false otherwise.
+            */
+            let isBoss = confirm("Are you the boss?");
+            alert(isBoss);
+            // All these methods are modal: they pause script execution and don’t allow the visitor to interact with the rest of the page until the window has been dismissed.
+
+            // Type conversions
+            // Most of the time, operators and functions automatically convert the values given to them to the right type. For example, alert automatically converts any value to a string to show it. Mathematical operations convert values to numbers.
+            // String conversion: we can call the String(value) function to convert a value to a string.
+            /*
+                let value = true;
+                value = String(value);
+                alert(value);
+            */
+            // String conversion is mostly obvious. A false becomes "false", null becomes "null", etc.
+            // Numeric conversion: happens in mathematical functions and expressions automatically.
+            /*
+                alert( "6" / "2" ); // 3, strings are converted to numbers
+            */
+            // We can use the Number(value) function to explicitly convert a value to a number.
+            /*
+                let str = "123";
+                let num = Number(str);
+                alert(typeof num);
+            */
+            // Explicit conversion is usually required when we read a value from a string-based source like a text form but expect a number to be entered.
+            // If the string is not a valid number, the result of such a conversion is NaN.
+            /* Numeric conversion rules:
+                undefined   -> NaN
+                null        -> 0
+                true        -> 1
+                false       -> 0
+                string      -> whitespaces from the start and end are ignored, if the remaining string is empty, the result is 0. An error gives NaN.
+            */
+            // Most mathematical operators also perform such conversion.
+            // Boolean conversion: happens in logical operations, we can also perform it with a call to Boolean(value).
+            /* Boolean conversion rules:
+                Values that are intuitively "empty" like 0, an empty string, null, undefined, and NaN, become false.
+                Other values become true.
+            */
+            // Note that strings "0" and " " are true, because JavaScript always treats a non-empty string as true, unlike in PHP which treats "0" as false.
+
+            // Operators
+            /*
+                negation: unary -
+                numeric conversion: unary +, does the same thing as Number()
+                addition: +
+                subtraction: -
+                multiplication: *
+                division: /
+                remainder/modulo/modulus: %
+                exponentiation: **
+                string concatenation: +, if any of the operands is a string, the other one is converted to a stirng. Other arithmetic operators work only with numbers and always convert their operands to numbers.
+                assignment: =, assigns the value of the left operand to the right operand, then returns it.
+                modify-and-assign: +=, -=, *=, /=, %=, **=
+                increment: ++, can only be applied to variables, can be placed either before or after a variable with different effect: the prefix form returns the new value while the postfix form returns the old value (prior to increment).
+                decrement: --, same as above.
+                comma: ,. The comma operator allows us to evaluate several expressions, dividing them with a comma ,. Each of them is evaluated but only the result of the last one is returned. The precedence of comma operator is lower than that of assignment operator.
+            */
+            /*
+                let apples = "2";
+                let oranges = "3";
+                alert(apples + oranges); // "23", string concatenation.
+                alert(+apples + +oranges); // 5, numeric conversion first.
+
+                let a = 1;
+                let b = 2;
+                let c = 3 - (a = b + 1); // note this syntax is invalid in Python, and is not recommended in JavaScript.
+                alert(a); // 3
+                alert(c); // 0
+
+                let x, y, z;
+                x = y = z = 2 + 2; // chaining assignments, also invalid in Python, not recommended.
+
+                let a = (1 + 2, 3 + 4);
+                alert(a); // 7, the result of 3 + 4.
+            */
+
+            // Bitwise operators
+            // Bitwise operators treat arguments as 32-bit integer numbers and work on the level of their binary representation.
+            /*
+                AND                     &
+                OR                      |
+                XOR                     ^
+                NOT                     ~
+                LEFT SHIFT              <<
+                RIGHT SHIFT             >>
+                ZERO-FILL RIGHT SHIFT   >>>
+            */
+
+            // Comparisons
+            /*
+                greater/less than               >, <
+                greater/less than or equal to   >=, <=
+                equal to                        ==
+                not equal to                    !=
+                strictly equal to               ===, strict equality operator, checks equality without type conversion.
+                strictly not equal to           !==, strict non-equality operator, checks inequality without type conversion.
+            */
+            // When comparing strings, strings are compared letter-by-letter according to the index in the internal encoding table (Unicode).
+            // When comparing values of different types, JavaScript converts the values to numbers.
+            /* For example:
+                alert('2' > 1); // true, string '2' becomes number 2.
+                alert('01' == 1); // true, string '01' becomes number 1.
+                alert(true == 1); // true, true becomes 1.
+
+                let a = 0;
+                alert(Boolean(a)); // false
+                let b = '0';
+                alert(Boolean(b)); // true
+                alert(a == b); // true!
+
+                alert(null == undefined); // true, special rule: they equal each other, but not any other value. This means null and undefined are not converted to numbers when they are compared by ==.
+                alert(null == 0); // false
+                alert(null == false); // false
+                alert(undefined == 0); // false
+                alert(undefined == NaN); // false
+                // When null and undefined by >, <, >=, <=, they are converted to numbers, null becomes 0, undefined becomes NaN.
+                alert(null > 0); // false
+                alert(null == 0); // false
+                alert(null >= 0 ); // true, the special rule makes this illogical.
+                // Incomparable undefined: undefined should not be compared to other values.
+                alert(undefined > 0); // false
+                alert(undefined < 0); // false
+                alert(undefined == 0); // false
+                // Treat any comparison with null/undefined with exceptional care or using strict equality/inequality operators. Before using comparisons >, <, >=, <= with a variable which may be null/undefined, make sure you know what you are doing.
+            */
+
+            // Conditions: if statement, ? operator
+            // if (condition) statement evaluates a condition in parentheses, if the result is true, execute a block of code.
+            /* For example:
+                let year = prompt("In which year was ECMAScript-2015 specification published?");
+                if (year == 2015) alert("You are right!");
+            */
+            // If we want to execute more than one statement, we have to wrap the code block inside curly braces.
+            /*
+                if (year == 2015) {
+                    alert("You are right!");
+                    alert("You are so smart!");
+                }
+            */
+            // The if statement may contain an optional else clause. It executes when the condition is false. 
+            /*
+                if (condition) {
+                    statements
+                } else {
+                    statements
+                }
+            */
+            // To test several variants of a condition, using else if.
+            /*
+                if (condition1) {
+                    statements
+                } else if (condition2) {
+                    statements
+                } else if (condition3) {
+                    statements
+                } else {
+                    statements
+                }
+            /* Conditional assignment
+                let result = condition ? value1 : value2;
+            */
+            // The condition is evaluated, if true, value1 is returned, otherwise value2.
+            /* For example:
+                let accessAllowed = (age > 18) ? true : false;
+                or without parentheses:
+                let accessAllowed = age > 18 ? true : false;
+                actually you don't need ? operator in this case:
+                let accessAllowed = age > 18;
+            */
+            // Multiple ?
+            /* A sequence of question mark operators ? can return a value that depends on more than one condition.
+                let message = (age < 3) ? 'Hi, baby!' : (age < 18) 'Hello!' : (age < 100) ? 'Greetings!' : 'What an unusual age!';
+            */
+            // Using ? as a replacement for if
+            /*
+                let company = prompt('Which company created JavaScript?', '');
+                (company == 'Netscape') ? alert('Right!') : alert('Wrong!');
+            */
+            // Using the question mark operator in this way is not recommended however, because it's less readable and there are also some difference between them.
+
+            // Logical operators
+            // || OR, && AND, ! NOT
+            /*
+                result = a || b;
+                result = a || b || c;
+                alert(true || false); // true
+            */
+            // A chain of OR returns the first truthy value or the last one if no truthy value is found. A value is returned in its original form, without the conversion.
+            /*
+                result = a && b;
+                result = a && b && c;
+                alert(true && true); // true
+            */
+            // AND returns the first falsy value or the last value if none were found.
+            // The precedence of AND is higher than OR. This rule seems to be redundant.
+            /* Don't replace if with && or ||
+                let x = 1;
+                x > 0 && alert("Greater than zero!");
+
+                let x = 1;
+                if (x > 0) alert("Greater than zero!");
+            */
+            // NOT converts the operand to boolean type, and returns the inverse value.
+            /*
+                result = !value;
+                alert(!true); // false
+                alert(!0); // true
+            */
+            // A double NOT !! is sometimes used for converting a value to boolean type.
+            // The precedence of NOT ! is the highest of all logical operators, so it always executes first, before && or ||.
+
+            // Nullish coalescing operator ??
+            // ?? provides a short syntax for selecting a first "defined" variable from the list.
+            // Similar to ||, with the difference in 0, ''.
+            /* The result of a ?? b is:
+                a if it's not null or undefined,
+                b, otherwise.
+               So, x = a ?? b is a short equivalent to:
+                x = (a !== null && a !== undefined) ? a : b;
+            */
+            // ?? is evaluated after most other operations, but before = and ?.
+            /* Due to safety reasons, it’s forbidden to use ?? together with && and || operators without explicit parentheses.
+                let x = 1 && 2 ?? 3; // syntax error
+                let x = (1 && 2) ?? 3; // 2, works
+            */
+
+            // Loops: while and for
+            /*
+                while (condition) {
+                    // loop body
+                }
+            */
+            // Curly braces are not required for a single-line body.
+            /*
+                do {
+                    // loop body
+                } while (condition);
+            */
+            /*
+                for (begin; condition; step) {
+                    // loop body
+                }
+            */
+            // Any part of for, begin, condition, step, can be skipped, even all of them, but the two semicolons must be present.
+            // We can force the exit at any time using the special break directive.
+            // Use continue to stop the current iteration and forces the loop to start a new one (if the condition allows).
+            /* Syntax constructs that are not expressions cannot be used with the ternary operator ?. In particular, directives such as break/continue aren’t allowed there.
+                (i > 5) ? alert(i) : continue; // continue isn't allowed here
+            */
+
+            // Labels for break/continue
+            /* A label is an identifier with a colon before a loop:
+                labelName: for (...) {
+                    // loop body
+                }
+            Label do not allow to jump anywhere.
+                break label; // doesn't jumps to the label below
+                label: for (...)
+            A call to break/continue is only possible from inside a loop and the label must be somewhere above the directive.
+            */
+
+            // switch statement
+            /* A switch statement can replace multiple if checks.
+                switch (x) {
+                    case value1: // if (x === value1)
+                        ...
+                        [break]
+                    case value2: // if (x === value2)
+                        ...
+                        [break]
+                    default:
+                        ...
+                        [break]
+                }
+            */
+            // The value of x is checked for a strict equality. If the equality is found, switch starts to execute the code starting from the corresponding case, until the nearest break or until the end of switch. If no case is matched then the default code is executed (if it exists).
+            // If there is no break then the execution continues with the next case without any checks.
+            // Any expression can be a switch/case argument.
+            // Several variants of case which share the same code can be grouped. The ability to “group” cases is a side-effect of how switch/case works without break.
+
+            // Functions
+            // Functions are the main “building blocks” of the program.
+            /* Function declaration:
+                function name(parameters) {
+                    // function body
+                }
+            */
+            // A variable declared inside a function, i.e. local variable, is only visible inside that function. A function can access an outer variable or global variable as well. If a same-named variable is declared inside the function then it shadows the outer one.
+            // It’s a good practice to minimize the use of global variables. Sometimes though they can be useful to store project-level data.
+            // If a parameter is required but not provided, then its value becomes undefined, not triggering error. If we want to provide “default” value, then we can specify it after =.
+            /* Sometimes it makes sense to set default values for parameters not in the function declaration, but at a later stage, during its execution.
+                function showMessage (text) {
+                    if (text === undefined) {
+                        text = 'empty';
+                    }
+                    alert(text);
+                }
+            Or we could use || operator:
+                text = text || 'empty';
+            Or use nullish coalescing operator ?? when falsy values, such as 0, '' are considered regular.
+            */
+            // A function can return a value back into the calling code as the result. The directive return can be in any place of the function. When the execution reaches it, the function stops, and the value is returned to the calling code. It is possible to use return without a value. That causes the function to exit immediately. A function with an empty return or without it returns undefined.
+            // Never add a newline between return and the value. That doesn’t work, because JavaScript assumes a semicolon after return.
+            // Naming functions concisely with verbs like show..., creat..., calc..., get..., check... and so on to describe what it does. One function, one action; if some functions are usually called together, create a new one to combine them.
+            /*
+                function checkAge(age) {
+                    if (age > 18) return true;
+                    return confirm('Did parents allow you?');
+                }
+
+                function checkAge(age) {
+                    return age > 18 ? true : confirm('Did parents allow you?');
+                }
+
+                function checkAge(age) {
+                    return age > 18 || confirm('Did parents allow you?');
+                }
+             */
+
+
+
+
+
+
+        </script>
+    </body>
+</html>

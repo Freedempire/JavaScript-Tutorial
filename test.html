@@ -1,0 +1,60 @@
+<html>
+    <body>
+        <script>
+            // find prime numbers between 2 and n
+            // let n;
+            // do {
+            //     n = prompt("Input an integer number greater than 2");                
+            // } while (n <= 2 || !+n);
+            // nexti: for (let i = 2; i <= n; i++) {
+            //     for (let j = 2; j <= i ** (1/2); j++) {
+            //         if (i % j == 0) continue nexti;
+            //     }
+            //     alert(`prime number between 2 and ${n}: ${i}`);
+            // }
+
+
+            // rewrite switch into if
+            // let browser = prompt("Enter the name of your browser:");
+            // if (browser == 'Edge') {
+            //     alert("You've got the Edge!");
+            // } else if (browser == 'Chrome' || browser == 'Firefox' || browser == 'Safari' || browser == 'Opera') {
+            //     alert("Okay we support these browsers too.");
+            // } else {
+            //     alert("We hope that this page looks okay!");
+            // }
+
+
+            // rewrite if into switch
+            // let a = +prompt('a?', '');
+            // switch (a) {
+            //     case 0:
+            //         alert(0);
+            //         break;
+
+            //     case 1:
+            //         alert(1);
+            //         break;
+
+            //     case 2:
+            //     case 3:
+            //         alert('2,3');
+            //         break;
+            // }
+
+            // function min(a, b)
+            function min(a, b) {
+                return a > b ? b : a;
+            }
+
+            // function pow(x, n)
+            function pow(x, n) {
+                let result = x;
+                for (i = 1; i < n; i++) {
+                    result *= x;
+                }
+                return result;
+            }
+        </script>
+    </body>
+</html>

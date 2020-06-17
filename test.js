@@ -1,0 +1,1 @@
+alert("Play the world, play your life!");
