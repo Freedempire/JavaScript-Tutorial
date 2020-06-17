@@ -96,6 +96,25 @@
     - [Debugging in Chrome](#debugging-in-chrome)
       - [The Sources panel](#the-sources-panel)
       - [Breakpoints](#breakpoints)
+        - [Conditional breakpoints](#conditional-breakpoints)
+      - [Debugger command](#debugger-command)
+      - [Pause and look around](#pause-and-look-around)
+      - [Logging](#logging)
+      - [Manual](#manual)
+    - [Coding style](#coding-style)
+      - [Cheat sheet of style](#cheat-sheet-of-style)
+      - [Style guide](#style-guide)
+      - [Automated linters](#automated-linters)
+    - [Comments rules](#comments-rules)
+      - [Bad comments](#bad-comments)
+        - [Factor out functions](#factor-out-functions)
+        - [Create functions](#create-functions)
+      - [Good comments](#good-comments)
+        - [Describe the architecture](#describe-the-architecture)
+        - [Document function parameters and usage](#document-function-parameters-and-usage)
+        - [Why is the task solved this way?](#why-is-the-task-solved-this-way)
+        - [Any subtle features of the code? Where they are used?](#any-subtle-features-of-the-code-where-they-are-used)
+    - [Automated testing with Mocha](#automated-testing-with-mocha)
 
 ## Introduction
 
@@ -1313,3 +1332,152 @@ If we press <kbd>Esc</kbd>, then a console opens below.
 A breakpoint is a point of code where the debugger will automatically pause the code execution.
 
 While the code is paused, we can examine current variables, execute commands in the console etc. In other words, we can debug it.
+
+##### Conditional breakpoints
+
+Right click on the line number allows to create a *conditional* breakpoint. It only triggers when the given expression is truthy.
+
+#### Debugger command
+
+We can also pause the code by using the `debugger` command in it, like this:
+
+```JavaScript
+function hello(name) {
+  let phrase = `Hello, ${name}`;
+
+  debugger;                     // the debugger stops here
+
+  say(phrase);
+}
+```
+
+#### Pause and look around
+
+After setting breakpoints, the easiest way to activate debugger is pressing <kbd>F5</kbd> to reload the page.
+
+**Watch** - shows current value for expressions. You can click the plus `+` and input an expression.
+
+**Call Stack** - shows the nested call chain.
+
+**Scope** - current variables.
+
+Pressing <kbd>F8</kbd> to continue the execution.
+
+**Step** - run the next command, hotkey <kbd>F9</kbd>. Run the next statement.
+
+**Step over** - run the next command, but not go into a function, hotkey <kbd>F10</kbd>. If the next statement is a function call, the `step` command will goes into it and pauses the execution at its first line, while `step over` command will execute the nest function call, and the execution is then paused immediately after that function.
+
+**Step into** - hotkey <kbd>F11</kbd>. It's similar to `step`, but behaves differently in case of asynchronous function calls. The `step` command ignores async actions, while the `step into` goes into their code, waiting for them if necessary.
+
+**Step out** - continue the execution till the end of the current function, hotkey <kbd>Shift+F11<kbd>.
+
+**Continue to here** - right click on a line of code opens the context menu with this option.
+
+#### Logging
+
+To output something from our code to console, there's `console.log` function.
+
+#### Manual
+
+There are many more options in developer tools than covered here. The full manual is at <https://developers.google.com/web/tools/chrome-devtools>.
+
+### Coding style
+
+Our code must be as clean and easy to read as possible.
+
+That is actually the art of programming – to take a complex task and code it in a way that is both correct and human-readable. A good code style greatly assists in that.
+
+#### Cheat sheet of style
+
+![JavaScript coding style cheat sheet](js_coding_style.jpg)
+
+There are no “you must” rules. Nothing is set in stone here. These are style preferences, not religious dogmas.
+
+#### Style guide
+
+There are many existing guides to choose from.
+
+Some popular choices:
+
+* [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
+* [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
+* [idiomatic.JS](https://github.com/rwaldron/idiomatic.js)
+* [StandardJs](https://standardjs.com/)
+
+#### Automated linters
+
+Linters are tools that can automatically check the style of your code and make improving suggestions.
+
+The great thing about them is that style-checking can also find some bugs, like typos in variable or function names.
+
+Here are some well-known linting tools:
+
+* [JSLint](http://www.jslint.com/) - one of the first linters
+* [JSHint](http://www.jshint.com/) - more setting than JSLint
+* [ESLint](http://eslint.org/) - probably the newest one
+  
+  [Getting started with ESLint](https://eslint.org/docs/user-guide/getting-started)
+
+### Comments rules
+
+We normally use comments to describe how and why the code works.
+
+At first sight, commenting might be obvious, but novices in programming often use them wrongly.
+
+#### Bad comments
+
+Novices tend to use comments to explain “what is going on in the code”. But in good code, the amount of such “explanatory” comments should be minimal. Seriously, the code should be easy to understand without them.
+
+##### Factor out functions
+
+Sometimes it’s beneficial to replace a code piece with a function. The function itself will become the comment. Such code is called *self-descriptive*.
+
+##### Create functions
+
+If we have a long “code sheet”, it might be a better variant to refactor it into functions.
+
+#### Good comments
+
+Explanatory comments are usually bad. Which comments are good?
+
+##### Describe the architecture
+
+Provide a high-level overview of components, how they interact, what’s the control flow in various situations…
+
+##### Document function parameters and usage
+
+There’s a special syntax [JSDoc](http://en.wikipedia.org/wiki/JSDoc) to document a function: usage, parameters, returned value.
+
+For instance:
+
+```JavaScript
+/**
+  * Returns x raised to the n-th power.
+  *
+  * @param {number} x The number to raise.
+  * @param {number} n The power, must be a natural number.
+  * @return {number} x raised to the n-th power.
+*/
+function power(x, n) {
+  ...
+}
+```
+
+Such comments allow us to understand the purpose of the function and use it the right way without looking in its code.
+
+There are auto-documenting tools like [JSDoc 3](https://github.com/jsdoc3/jsdoc) that can generate HTML-documentation from the comments. You can read more information about JSDoc at <http://usejsdoc.org/>.
+
+##### Why is the task solved this way?
+
+Why is the task solved exactly this way? The code gives no answer.
+
+If there are many ways to solve the task, why this one? Especially when it’s not the most obvious one.
+
+Comments that explain the solution are very important. They help to continue development the right way.
+
+##### Any subtle features of the code? Where they are used?
+
+If the code has anything subtle and counter-intuitive, it’s definitely worth commenting.
+
+### Automated testing with Mocha
+
